@@ -7,7 +7,7 @@ from cmail import send_mail
 from stoken import endata,dndata
 from mysql.connector import (connection)
 import re
-mydb=connection.MySQLConnection(user='root',host='localhost',password='admin',database='snm0nr12')
+mydb=connection.MySQLConnection(user='flaskuser',host='localhost',password='password',database='flaskdb')
 app=Flask(__name__)
 excel.init_excel(app)
 app.secret_key='code4545'
@@ -449,4 +449,4 @@ def newpassword(data):
 
 
 if __name__=='__main__':
-    app.run(debug=True,use_reloader=True)
+    app.run()
