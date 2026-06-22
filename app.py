@@ -12,6 +12,8 @@ app=Flask(__name__)
 excel.init_excel(app)
 app.secret_key='code4545'
 app.config['SESSION_TYPE']='filesystem'
+app.config['SERVER_NAME']='13.206.203.172'
+app.config['PREFERRED_URL_SCHEME']='http'
 Session(app)
 @app.route('/',methods=['GET'])
 def home():
@@ -410,8 +412,7 @@ def forgotpassword():
             email_count=cursor.fetchone()[0] #(1,),(0,)
             if email_count==1:
                 subject=f'Use the reset link for forgotpassword SNM Appy'
-                resetlink=f"http://13.206.203.172/newpassword/{endata(forgot_email),_external=True}"
-                body=f"Click the reset link {resetlink}"
+                body=f"Click the reset link {url_for('newpassword',data=endata(forgot_email),_external=True)}"
                 send_mail(to=forgot_email,subject=subject,body=body) 
             elif email_count==0:
                 flash('Email not found pls check')
