@@ -410,7 +410,8 @@ def forgotpassword():
             email_count=cursor.fetchone()[0] #(1,),(0,)
             if email_count==1:
                 subject=f'Use the reset link for forgotpassword SNM Appy'
-                body=f"Click the reset link {url_for('newpassword',data=endata(forgot_email),_external=True)}"
+                resetlink=f"http://13.206.203.172/newpassword/{endata(forgot_email),_external=True}"
+                body=f"Click the reset link {resetlink}"
                 send_mail(to=forgot_email,subject=subject,body=body) 
             elif email_count==0:
                 flash('Email not found pls check')
